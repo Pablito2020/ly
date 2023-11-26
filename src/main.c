@@ -77,6 +77,9 @@ int main(int argc, char** argv)
 	config_defaults();
 	lang_defaults();
 
+    // ignore errors (if we are on tty, this are from /dev/kmsg)
+    freopen("/dev/null", "w", stderr);
+
 	char *config_path = NULL;
 	// parse args
 	const struct argoat_sprig sprigs[ARG_COUNT] =
